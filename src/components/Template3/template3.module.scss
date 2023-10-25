@@ -1,0 +1,67 @@
+.template {
+  width: 108rem;
+  height: 108rem;
+  position: relative;
+  background-size: cover;
+  background: linear-gradient(to right, #201f40, #010101);
+  color: #fff;
+  overflow: hidden;
+  align-items: center;
+  &ContentTop {
+    display: flex;
+    &ImgContainer {
+      height: 77.9rem;
+      width: 65%;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+    &Title {
+      font-size: 6rem;
+      width: 35%;
+      margin: 18rem 5rem 5rem;
+      font-weight: bold;
+    }
+  }
+  &ContentBottom {
+    padding: 5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    > div {
+      width: 48%;
+    }
+    > div:nth-child(2) {
+      text-align: center;
+    }
+    &Subtitle {
+      font-size: 2.5rem;
+      margin-bottom: 5rem;
+    }
+    &Btn {
+      background-color: #0f1cf3;
+      padding: 1.6rem 3.2rem;
+      border-radius: 0.4rem;
+      color: #fff;
+      font-size: 3.2rem;
+      border: none;
+      box-shadow: 0 0 0.8rem rgba(37, 44, 97, 0.2);
+    }
+  }
+
+  &TopZigZag {
+    position: absolute;
+    top: 6rem;
+  }
+
+  &BottomZigZag {
+    position: absolute;
+    right: 0;
+    bottom: 6rem;
+    path {
+      stroke: #6a6a6e;
+    }
+  }
+}

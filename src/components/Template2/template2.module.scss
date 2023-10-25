@@ -1,0 +1,33 @@
+.template {
+  width: 108rem;
+  height: 108rem;
+  background-size: cover;
+  background-position: center center;
+  background-blend-mode: multiply;
+  color: #fff;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  &Content {
+    width: 65%;
+    padding: 5rem;
+    &Title {
+      font-size: 7.7rem;
+      line-height: 7.7rem;
+      margin-top: 0;
+      margin-bottom: 5rem;
+      background-color: #fff;
+      background-image: linear-gradient(to right, #6edfe8, #fff, #fff);
+      font-weight: bold;
+      background-size: 100%;
+      -webkit-background-clip: text;
+      -moz-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      -moz-text-fill-color: transparent;
+    }
+    &Subtitle {
+      font-size: 3.5rem;
+      margin-bottom: 5rem;
+    }
+  }
+}

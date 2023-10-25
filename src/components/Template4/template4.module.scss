@@ -1,0 +1,87 @@
+@mixin ImgCommon {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.template {
+  width: 108rem;
+  height: 108rem;
+  padding: 8rem 0 0 8rem;
+  position: relative;
+  overflow: hidden;
+  &LogoContainer {
+    width: 8.3rem;
+    height: 8.3rem;
+    position: absolute;
+    right: 10rem;
+    img {
+      @include ImgCommon();
+      border-radius: 50%;
+    }
+  }
+  &TitleContainer {
+    position: absolute;
+    right: 6rem;
+    top: 20rem;
+    color: #fff;
+    font-size: 4.1rem;
+    width: 32.1rem;
+    height: 27rem;
+    font-weight: 700;
+    font-family: "montserrat";
+  }
+  &Img1Container {
+    width: 53rem;
+    height: 79.7rem;
+    border-radius: 26.6rem;
+    overflow: hidden;
+    img {
+      @include ImgCommon();
+    }
+  }
+  &Img2Container {
+    width: 57.7rem;
+    height: 76.9rem;
+    border-radius: 28.85rem;
+    position: relative;
+    right: -30rem;
+    top: -40rem;
+    z-index: 3;
+    overflow: hidden;
+    img {
+      @include ImgCommon();
+    }
+  }
+  &ArcContainer {
+    position: absolute;
+    bottom: 0;
+    right: -8rem;
+    z-index: 2;
+  }
+  &StarContainer {
+    position: absolute;
+    bottom: 5rem;
+    left: 5rem;
+    z-index: 4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &Inner {
+      position: relative;
+      p {
+        position: absolute;
+        font-size: 8rem;
+        font-family: "koulen", system-ui, -apple-system, BlinkMacSystemFont,
+          "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans",
+          "Helvetica Neue", sans-serif;
+        top: 32%;
+        left: 34%;
+        font-size: 9.6rem;
+        color: #fff;
+        padding: 0;
+        margin: 0;
+      }
+    }
+  }
+}
