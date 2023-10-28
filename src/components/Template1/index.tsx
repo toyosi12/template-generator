@@ -1,7 +1,9 @@
 import styles from "./template1.module.scss";
-import { adjustFontSize } from "../../utils";
+import { adjustFontSize, handleFile } from "../../utils";
 import { useState } from "react";
 import Workspace from "../Workspace";
+import TextArea from "../DesignSystem/TextArea/TextArea";
+import UploadBtn from "../DesignSystem/UploadBtn/UploadBtn";
 
 interface TemplateFields {
   title: string;
@@ -57,48 +59,39 @@ const Canvas: React.FC<Template> = ({ fields, setField }) => {
 };
 
 const ToolBar: React.FC<Template> = ({ fields, setField }) => {
-  const handleFileChange = (e: React.ChangeEvent<any>) => {
-    const file = e.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = (e) => {
-        if (e?.target?.result) {
-          setField("img", e.target?.result);
-        }
-      };
-      reader.readAsDataURL(file);
-    }
+  const handleFileChange = async (e: React.ChangeEvent<any>) => {
+    const uploadedImage = await handleFile(e.target.files[0]);
+    setField("img", uploadedImage);
   };
   return (
-    <div className="toolBarContainer">
-      <div>
-        <label>title</label>
-        <textarea
-          name="title"
-          onChange={(e) => setField(e.target.name, e.target.value)}
-          defaultValue={initialFields.title}
-        />
-      </div>
-      <div>
-        <label>subtitle</label>
-        <textarea
-          name="subtitle"
-          onChange={(e) => setField(e.target.name, e.target.value)}
-          defaultValue={initialFields.subtitle}
-        />
-      </div>
-      <div>
-        <label>cta</label>
-        <input
-          name="cta"
-          onChange={(e) => setField(e.target.name, e.target.value)}
-          defaultValue={initialFields.cta}
-        />
-      </div>
-      <div>
-        <label>img</label>
-        <input type="file" name="img" onChange={handleFileChange} />
-      </div>
+    <div className="toolBoxContainer">
+      <TextArea
+        label="Title"
+        name="title"
+        onChange={(e) => setField(e.target.name, e.target.value)}
+        defaultValue={initialFields.title}
+      />
+
+      <TextArea
+        label="Subtitle"
+        name="subtitle"
+        onChange={(e) => setField(e.target.name, e.target.value)}
+        defaultValue={initialFields.subtitle}
+      />
+
+      <TextArea
+        label="CTA"
+        name="cta"
+        onChange={(e) => setField(e.target.name, e.target.value)}
+        defaultValue={initialFields.cta}
+      />
+
+      <UploadBtn
+        label="Image"
+        name="img"
+        id="t1Img"
+        onChange={handleFileChange}
+      />
     </div>
   );
 };

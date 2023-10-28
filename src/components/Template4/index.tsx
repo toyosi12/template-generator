@@ -1,10 +1,13 @@
 import { Template4Prop } from "../../interfaces";
 import styles from "./template4.module.scss";
-import { adjustFontSize } from "../../utils";
+import { adjustFontSize, handleFile } from "../../utils";
 import Star from "../../images/Star";
 import Arc from "../../images/Arc";
 import Workspace from "../Workspace";
 import { useState } from "react";
+import TextArea from "../DesignSystem/TextArea/TextArea";
+import UploadBtn from "../DesignSystem/UploadBtn/UploadBtn";
+import Input from "../DesignSystem/Input/Input";
 
 interface TemplateFields {
   title: string;
@@ -56,7 +59,7 @@ const Canvas: React.FC<Template> = ({ fields, setField }) => {
         </div>
         <div className={styles.templateStarContainer}>
           <div className={styles.templateStarContainerInner}>
-            <p>SALE</p>
+            <p style={adjustFontSize(6, fields.cta.length, 8)}>{fields.cta}</p>
             <Star pathColor={fields.primaryColor} />
           </div>
         </div>
@@ -66,40 +69,60 @@ const Canvas: React.FC<Template> = ({ fields, setField }) => {
 };
 
 const ToolBar: React.FC<Template> = ({ fields, setField }) => {
-  const handleFileChange = (e: React.ChangeEvent<any>) => {
-    const file = e.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = (e) => {
-        if (e?.target?.result) {
-          setField("img", e.target?.result);
-        }
-      };
-      reader.readAsDataURL(file);
-    }
+  const handleFileChange = async (e: React.ChangeEvent<any>) => {
+    console.log("keyy: ", e.target.name);
+    const uploadedFile = await handleFile(e.target.files[0]);
+    setField(e.target.name, uploadedFile);
   };
   return (
-    <div className="toolBarContainer">
-      <div>
-        <label>title</label>
-        <textarea
-          name="title"
-          onChange={(e) => setField(e.target.name, e.target.value)}
-          defaultValue={initialFields.title}
-        />
-      </div>
-      <div>
-        <label>cta</label>
-        <input
-          name="cta"
-          onChange={(e) => setField(e.target.name, e.target.value)}
-          defaultValue={initialFields.cta}
-        />
-      </div>
-      <div>
-        <label>img</label>
-        <input type="file" name="img" onChange={handleFileChange} />
-      </div>
+    <div className="toolBoxContainer">
+      <TextArea
+        label="Title"
+        name="title"
+        onChange={(e) => setField(e.target.name, e.target.value)}
+        defaultValue={initialFields.title}
+      />
+      <Input
+        type="color"
+        name="primaryColor"
+        label="Primary Color"
+        defaultValue={initialFields.primaryColor}
+        onChange={(e) => setField(e.target.name, e.target.value)}
+      />
+      <Input
+        type="color"
+        name="secondaryColor"
+        label="Secondary Color"
+        defaultValue={initialFields.secondaryColor}
+        onChange={(e) => setField(e.target.name, e.target.value)}
+      />
+      <TextArea
+        label="CTA"
+        name="cta"
+        onChange={(e) => setField(e.target.name, e.target.value)}
+        defaultValue={initialFields.cta}
+      />
+
+      <UploadBtn
+        label="Image1"
+        id="img1"
+        name="img1"
+        onChange={handleFileChange}
+      />
+
+      <UploadBtn
+        label="Image2"
+        id="img2"
+        name="img2"
+        onChange={handleFileChange}
+      />
+
+      <UploadBtn
+        label="Logo"
+        name="logo"
+        id="logo"
+        onChange={handleFileChange}
+      />
     </div>
   );
 };

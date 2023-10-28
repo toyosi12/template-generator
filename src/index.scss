@@ -32,10 +32,10 @@ body {
   display: flex;
   justify-content: center;
 }
-.toolBox {
-  background-color: #fff;
+.toolBoxContainer {
+  background-color: #070a0e;
   width: 20%;
-  height: 200px;
+  padding: 2rem 3rem;
 }
 
 .react-select {

@@ -6,22 +6,22 @@ import { Template } from "../interfaces";
 
 export const templateList: Template[] = [
   {
-    label: "Template 1",
+    label: "Alpha Template",
     value: "Template1",
     template: Template1,
   },
   {
-    label: "Template 2",
+    label: "Beta Template",
     value: "Template2",
     template: Template2,
   },
   {
-    label: "Template 3",
+    label: "Gamma Template",
     value: "Template3",
     template: Template3,
   },
   {
-    label: "Template 4",
+    label: "Delta Template",
     value: "Template4",
     template: Template4,
   },
