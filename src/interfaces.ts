@@ -11,3 +11,9 @@ export interface Template4Prop extends TemplateProp {
   primaryColor: string;
   secondaryColor: string;
 }
+
+export interface Template {
+  label: string;
+  value: string;
+  template: React.ComponentType;
+}

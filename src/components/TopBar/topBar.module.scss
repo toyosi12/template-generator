@@ -1,0 +1,23 @@
+.nav {
+  background-color: #111111;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  box-shadow: 0 0px 20px rgba(254, 81, 0, 0.3);
+  position: fixed;
+  z-index: 4;
+  width: 100%;
+  height: 7.3rem;
+  padding: 1.5rem 4rem;
+  p {
+    margin: 0 5rem 0 0;
+    font-size: 4rem;
+    font-weight: bold;
+  }
+  label {
+    color: #eee;
+  }
+  .appTitle {
+    color: #fe5100;
+  }
+}

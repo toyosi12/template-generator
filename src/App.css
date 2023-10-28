@@ -6,7 +6,6 @@ main.container {
   width: 140rem;
   padding: 9rem 15rem 15rem;
   margin: 10rem auto;
-  box-shadow: 0 0 3rem rgba(0, 0, 0, 0.5);
   display: flex;
   flex-direction: column;
   justify-content: center;

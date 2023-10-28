@@ -12,11 +12,6 @@
     &ImgContainer {
       height: 77.9rem;
       width: 65%;
-      img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
     }
     &Title {
       font-size: 6rem;
@@ -62,6 +57,48 @@
     bottom: 6rem;
     path {
       stroke: #6a6a6e;
+    }
+  }
+}
+
+.perforatedImage {
+  display: flex;
+  flex-wrap: wrap;
+  > div {
+    width: 21rem;
+    height: 21rem;
+    overflow: hidden;
+    border-radius: 50%;
+    // background-size: 300% 300%;
+    &:nth-child(1) {
+      background-position: 0% 0%;
+    }
+    &:nth-child(2) {
+      background-position: -100% 0;
+    }
+
+    &:nth-child(3) {
+      background-position: -200% 0;
+    }
+    &:nth-child(4) {
+      background-position: 0 -100%;
+    }
+    &:nth-child(5) {
+      background-position: -100% -100%;
+    }
+
+    &:nth-child(6) {
+      background-position: -200% -100%;
+    }
+    &:nth-child(7) {
+      background-position: 0 -200%;
+    }
+    &:nth-child(8) {
+      background-position: -100% -200%;
+    }
+
+    &:nth-child(9) {
+      background-position: -200% -200%;
     }
   }
 }

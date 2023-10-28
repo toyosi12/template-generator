@@ -1,29 +1,46 @@
 .template {
   width: 108rem;
   height: 108rem;
-  background-size: cover;
-  background-position: center center;
-  background-blend-mode: multiply;
   color: #fff;
-  display: flex;
-  align-items: flex-end;
   overflow: hidden;
+  background: linear-gradient(to right, #2c97b6, #1a2c4d);
+  &Img {
+    width: 100%;
+    height: 36.8rem;
+    object-fit: cover;
+  }
   &Content {
-    width: 65%;
-    padding: 5rem;
+    width: 100%;
+    padding: 5rem 7rem;
+    display: flex;
+    &Inner {
+      width: 65%;
+      overflow: hidden;
+      word-wrap: break-word;
+    }
+    &AuxImgContainer {
+      width: 35%;
+      .auxImg {
+        position: relative;
+        bottom: -15rem;
+        right: -4rem;
+        z-index: 2;
+      }
+      .auxImgTransparent {
+        position: relative;
+        width: 60rem;
+        bottom: 3rem;
+        right: 3rem;
+        opacity: 0.5;
+        z-index: 1;
+      }
+    }
     &Title {
       font-size: 7.7rem;
       line-height: 7.7rem;
       margin-top: 0;
       margin-bottom: 5rem;
-      background-color: #fff;
-      background-image: linear-gradient(to right, #6edfe8, #fff, #fff);
       font-weight: bold;
-      background-size: 100%;
-      -webkit-background-clip: text;
-      -moz-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      -moz-text-fill-color: transparent;
     }
     &Subtitle {
       font-size: 3.5rem;

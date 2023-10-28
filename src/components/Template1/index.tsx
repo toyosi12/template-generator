@@ -1,30 +1,125 @@
-import { TemplateProp } from "../../interfaces";
 import styles from "./template1.module.scss";
 import { adjustFontSize } from "../../utils";
-const Template1: React.FC<TemplateProp> = ({ title, subtitle, img1, cta }) => {
-  const backgroundStyles = {
-    backgroundImage: `url(${img1}), url('/images/pattern-bg.png')`,
+import { useState } from "react";
+import Workspace from "../Workspace";
+
+interface TemplateFields {
+  title: string;
+  subtitle: string;
+  img: string;
+  cta: string;
+}
+
+interface Template {
+  fields: TemplateFields;
+  setField: (key: string, value: any) => void;
+}
+
+const initialFields = {
+  title: "Lorem Impsum Dolor Text That is Dope And Cool.",
+  subtitle: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+        eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+        minim veniam, quis nostrud e`,
+  img: "/images/template1-bg.png",
+  cta: "THE CTA COMES HERE",
+};
+const Canvas: React.FC<Template> = ({ fields, setField }) => {
+  return (
+    <div className="canvas">
+      <div className={styles.template}>
+        <div className={styles.templateContent}>
+          <div
+            className={styles.templateContentTitle}
+            style={adjustFontSize(45 * 1.5, fields.title.length, 9)}
+          >
+            <p>{fields.title}</p>
+          </div>
+          <div
+            className={styles.templateContentSubtitle}
+            style={adjustFontSize(165 * 1.5, fields.subtitle.length, 3.5)}
+          >
+            <p>{fields.subtitle}</p>
+          </div>
+
+          <button
+            className={styles.templateContentBtn}
+            style={adjustFontSize(20, fields.cta.length, 2)}
+          >
+            {fields.cta}
+          </button>
+        </div>
+        <div className={styles.templateImgContainer}>
+          <img src={fields.img} alt="template2" />
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const ToolBar: React.FC<Template> = ({ fields, setField }) => {
+  const handleFileChange = (e: React.ChangeEvent<any>) => {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        if (e?.target?.result) {
+          setField("img", e.target?.result);
+        }
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+  return (
+    <div className="toolBarContainer">
+      <div>
+        <label>title</label>
+        <textarea
+          name="title"
+          onChange={(e) => setField(e.target.name, e.target.value)}
+          defaultValue={initialFields.title}
+        />
+      </div>
+      <div>
+        <label>subtitle</label>
+        <textarea
+          name="subtitle"
+          onChange={(e) => setField(e.target.name, e.target.value)}
+          defaultValue={initialFields.subtitle}
+        />
+      </div>
+      <div>
+        <label>cta</label>
+        <input
+          name="cta"
+          onChange={(e) => setField(e.target.name, e.target.value)}
+          defaultValue={initialFields.cta}
+        />
+      </div>
+      <div>
+        <label>img</label>
+        <input type="file" name="img" onChange={handleFileChange} />
+      </div>
+    </div>
+  );
+};
+
+const Template1 = () => {
+  const [fields, setFields] = useState<TemplateFields>(initialFields);
+
+  const updateField = (key: string, value: string) => {
+    setFields({
+      ...fields,
+      [key]: value,
+    });
   };
 
   return (
-    <div className={styles.template} style={backgroundStyles}>
-      <div className={styles.templateContent}>
-        <div
-          className={styles.templateContentTitle}
-          style={adjustFontSize(45, title.length, 9)}
-        >
-          <p>{title}</p>
-        </div>
-        <div
-          className={styles.templateContentSubtitle}
-          style={adjustFontSize(165, subtitle?.length || 1, 3.5)}
-        >
-          <p>{subtitle}</p>
-        </div>
-
-        <button className={styles.templateContentBtn}>{cta}</button>
-      </div>
-    </div>
+    <Workspace>
+      <>
+        <Canvas fields={fields} setField={updateField} />
+        <ToolBar fields={fields} setField={updateField} />
+      </>
+    </Workspace>
   );
 };
 
