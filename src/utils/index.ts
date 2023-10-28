@@ -25,8 +25,6 @@ export const handleFile = (file: any) => {
         }
       };
       reader.readAsDataURL(file);
-    } else {
-      reject();
     }
   });
 };

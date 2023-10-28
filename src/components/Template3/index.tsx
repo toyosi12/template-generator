@@ -56,7 +56,7 @@ const Canvas: React.FC<Template> = ({ fields, setField }) => {
         <div className={styles.templateContentTop}>
           <p
             className={styles.templateContentTopTitle}
-            style={adjustFontSize(70, fields.title.length, 6)}
+            style={adjustFontSize(67, fields.title.length, 6)}
           >
             {fields.title}
           </p>

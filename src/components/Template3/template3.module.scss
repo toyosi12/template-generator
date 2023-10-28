@@ -7,16 +7,20 @@
   color: #fff;
   overflow: hidden;
   align-items: center;
+  word-wrap: break-word;
   &ContentTop {
     display: flex;
     &ImgContainer {
       height: 77.9rem;
       width: 65%;
+      position: relative;
+      top: -4rem;
+      right: -6rem;
     }
     &Title {
       font-size: 6rem;
       width: 35%;
-      margin: 18rem 5rem 5rem;
+      margin: 18rem 2rem 5rem 5rem;
       font-weight: bold;
     }
   }
@@ -62,8 +66,9 @@
 }
 
 .perforatedImage {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
   > div {
     width: 21rem;
     height: 21rem;
