@@ -28,7 +28,7 @@ const initialFields = {
 const Canvas: React.FC<Template> = ({ fields, setField }) => {
   return (
     <div className="canvas">
-      <div className={styles.template}>
+      <div className={`${styles.template} template`}>
         <div className={styles.templateContent}>
           <div
             className={styles.templateContentTitle}
@@ -50,9 +50,10 @@ const Canvas: React.FC<Template> = ({ fields, setField }) => {
             {fields.cta}
           </button>
         </div>
-        <div className={styles.templateImgContainer}>
-          <img src={fields.img} alt="template2" />
-        </div>
+        <div
+          className={styles.templateImgContainer}
+          style={{ backgroundImage: `url(${fields.img})` }}
+        ></div>
       </div>
     </div>
   );
@@ -61,7 +62,7 @@ const Canvas: React.FC<Template> = ({ fields, setField }) => {
 const ToolBar: React.FC<Template> = ({ fields, setField }) => {
   const handleFileChange = async (e: React.ChangeEvent<any>) => {
     const uploadedImage = await handleFile(e.target.files[0]);
-    setField("img", uploadedImage);
+    setField("img", uploadedImage.url);
   };
   return (
     <div className="toolBoxContainer">

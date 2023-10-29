@@ -27,8 +27,11 @@ const initialFields: TemplateFields = {
 const Canvas: React.FC<Template> = ({ fields, setField }) => {
   return (
     <div className="canvas">
-      <div className={styles.template}>
-        <img src={fields.img} className={styles.templateImg} alt="template2" />
+      <div className={`${styles.template} template`}>
+        <div
+          className={styles.templateImg}
+          style={{ backgroundImage: `url(${fields.img})` }}
+        ></div>
         <div className={styles.templateContent}>
           <div className={styles.templateContentInner}>
             <p
@@ -65,10 +68,17 @@ const Canvas: React.FC<Template> = ({ fields, setField }) => {
 const ToolBar: React.FC<Template> = ({ fields, setField }) => {
   const handleFileChange = async (e: React.ChangeEvent<any>) => {
     const uploadedImage = await handleFile(e.target.files[0]);
-    setField("img", uploadedImage);
+    setField("img", uploadedImage.url);
   };
   return (
     <div className="toolBoxContainer">
+      <UploadBtn
+        label="Image"
+        name="img"
+        id="t2Img"
+        onChange={handleFileChange}
+      />
+
       <TextArea
         label="Title"
         name="title"
@@ -80,13 +90,6 @@ const ToolBar: React.FC<Template> = ({ fields, setField }) => {
         name="subtitle"
         onChange={(e) => setField(e.target.name, e.target.value)}
         defaultValue={initialFields.subtitle}
-      />
-
-      <UploadBtn
-        label="Image"
-        name="img"
-        id="t2Img"
-        onChange={handleFileChange}
       />
     </div>
   );

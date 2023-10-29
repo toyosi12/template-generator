@@ -2,7 +2,7 @@
   background-color: #111111;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: space-between;
   box-shadow: 0 0px 20px rgba(254, 81, 0, 0.1);
   position: fixed;
   z-index: 4;
@@ -19,5 +19,24 @@
   }
   .appTitle {
     color: #fe5100;
+  }
+  > div {
+    width: 50%;
+    &:first-child {
+      display: flex;
+      align-items: center;
+    }
+    &:nth-child(2) {
+      text-align: right;
+    }
+  }
+  .downloadBtn {
+    background-color: #fe5100;
+    color: #000;
+    padding: 1rem 2rem;
+    border-radius: 5px;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
   }
 }

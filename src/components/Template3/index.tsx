@@ -49,7 +49,7 @@ const PerforatedImage: React.FC<{ img: string }> = ({ img }) => {
 const Canvas: React.FC<Template> = ({ fields, setField }) => {
   return (
     <div className="canvas">
-      <div className={styles.template}>
+      <div className={`${styles.template} template`}>
         <ZigZag className={styles.templateTopZigZag} />
         <ZigZag2 className={styles.templateBottomZigZag} />
 
@@ -91,7 +91,7 @@ const Canvas: React.FC<Template> = ({ fields, setField }) => {
 const ToolBar: React.FC<Template> = ({ fields, setField }) => {
   const handleFileChange = async (e: React.ChangeEvent<any>) => {
     const uploadedImage = await handleFile(e.target.files[0]);
-    setField("img", uploadedImage);
+    setField("img", uploadedImage.url);
   };
   return (
     <div className="toolBoxContainer">

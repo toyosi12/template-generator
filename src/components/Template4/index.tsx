@@ -28,7 +28,7 @@ const initialFields: TemplateFields = {
   logo: "/images/figma.svg",
   title: "Lore Ipsum Dolor Jarvis Dolores jksld jlsdjfl",
   img1: "/images/template4-img1.png",
-  img2: "/images/template4-img2.png",
+  img2: "/images/template4-img1.png",
   cta: "SALE",
   primaryColor: "#FFB800",
   secondaryColor: "#00FFC2",
@@ -39,21 +39,24 @@ const Canvas: React.FC<Template> = ({ fields, setField }) => {
   };
   return (
     <div className="canvas">
-      <div className={styles.template} style={templateStyles}>
-        <div className={styles.templateLogoContainer}>
-          <img src={fields.logo} alt="logo" />
-        </div>
+      <div className={`${styles.template} template`} style={templateStyles}>
+        <div
+          className={styles.templateLogoContainer}
+          style={{ backgroundImage: `url(${fields.logo})` }}
+        ></div>
         <div className={styles.templateTitleContainer}>
           <p style={adjustFontSize(40, fields.title.length, 4.1)}>
             {fields.title}
           </p>
         </div>
-        <div className={styles.templateImg1Container}>
-          <img src={fields.img1} alt="img1" />
-        </div>
-        <div className={styles.templateImg2Container}>
-          <img src={fields.img2} alt="img2" />
-        </div>
+        <div
+          className={styles.templateImg1Container}
+          style={{ backgroundImage: `url(${fields.img1})` }}
+        ></div>
+        <div
+          className={styles.templateImg2Container}
+          style={{ backgroundImage: `url(${fields.img2})` }}
+        ></div>
         <div className={styles.templateArcContainer}>
           <Arc pathColor={fields.primaryColor} />
         </div>
@@ -70,9 +73,8 @@ const Canvas: React.FC<Template> = ({ fields, setField }) => {
 
 const ToolBar: React.FC<Template> = ({ fields, setField }) => {
   const handleFileChange = async (e: React.ChangeEvent<any>) => {
-    console.log("keyy: ", e.target.name);
     const uploadedFile = await handleFile(e.target.files[0]);
-    setField(e.target.name, uploadedFile);
+    setField(e.target.name, uploadedFile.url);
   };
   return (
     <div className="toolBoxContainer">

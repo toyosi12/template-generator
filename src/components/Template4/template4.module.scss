@@ -1,9 +1,3 @@
-@mixin ImgCommon {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
 .template {
   width: 108rem;
   height: 108rem;
@@ -15,10 +9,10 @@
     height: 8.3rem;
     position: absolute;
     right: 10rem;
-    img {
-      @include ImgCommon();
-      border-radius: 50%;
-    }
+    border-radius: 50%;
+    background-color: #000;
+    background-repeat: no-repeat;
+    background-position: center center;
   }
   &TitleContainer {
     position: absolute;
@@ -36,9 +30,8 @@
     height: 79.7rem;
     border-radius: 26.6rem;
     overflow: hidden;
-    img {
-      @include ImgCommon();
-    }
+    background-repeat: no-repeat;
+    background-size: cover;
   }
   &Img2Container {
     width: 57.7rem;
@@ -49,9 +42,8 @@
     top: -40rem;
     z-index: 3;
     overflow: hidden;
-    img {
-      @include ImgCommon();
-    }
+    background-repeat: no-repeat;
+    background-size: cover;
   }
   &ArcContainer {
     position: absolute;

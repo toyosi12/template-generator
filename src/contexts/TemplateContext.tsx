@@ -14,7 +14,7 @@ export const TemplateContext = createContext<TemplateContextType | undefined>(
 export const TemplateProvider = ({ children }: PropsWithChildren<{}>) => {
   const [currentTemplate, setCurrentTemplate] = useState<
     TemplateContextType["currentTemplate"]
-  >(templateList[0]);
+  >(templateList[3]);
 
   return (
     <TemplateContext.Provider value={{ currentTemplate, setCurrentTemplate }}>
