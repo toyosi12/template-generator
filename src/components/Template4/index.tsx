@@ -26,14 +26,14 @@ interface Template {
 
 const initialFields: TemplateFields = {
   logo: "/images/figma.svg",
-  title: "Lore Ipsum Dolor Jarvis Dolores jksld jlsdjfl",
+  title: "Lore Ipsum Dolor Jarvis Dolores Umbridge",
   img1: "/images/template4-img1.png",
-  img2: "/images/template4-img1.png",
+  img2: "/images/template4-img3.jpeg",
   cta: "SALE",
   primaryColor: "#FFB800",
   secondaryColor: "#00FFC2",
 };
-const Canvas: React.FC<Template> = ({ fields, setField }) => {
+const Canvas: React.FC<Template> = ({ fields }) => {
   const templateStyles = {
     background: `linear-gradient(45deg, ${fields.primaryColor}, #000, #000, ${fields.secondaryColor})`,
   };
@@ -71,7 +71,7 @@ const Canvas: React.FC<Template> = ({ fields, setField }) => {
   );
 };
 
-const ToolBar: React.FC<Template> = ({ fields, setField }) => {
+const ToolBar: React.FC<Template> = ({ setField }) => {
   const handleFileChange = async (e: React.ChangeEvent<any>) => {
     const uploadedFile = await handleFile(e.target.files[0]);
     setField(e.target.name, uploadedFile.url);
