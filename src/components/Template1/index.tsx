@@ -32,13 +32,13 @@ const Canvas: React.FC<Template> = ({ fields, setField }) => {
         <div className={styles.templateContent}>
           <div
             className={styles.templateContentTitle}
-            style={adjustFontSize(45 * 1.5, fields.title.length, 9)}
+            style={adjustFontSize(45 * 1.2, fields.title.length, 9)}
           >
             <p>{fields.title}</p>
           </div>
           <div
             className={styles.templateContentSubtitle}
-            style={adjustFontSize(165 * 1.5, fields.subtitle.length, 3.5)}
+            style={adjustFontSize(165 * 1.2, fields.subtitle.length, 3.5)}
           >
             <p>{fields.subtitle}</p>
           </div>
